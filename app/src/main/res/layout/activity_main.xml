@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yellow"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/btn_play"
+        android:layout_width="@dimen/_60ssp"
+        android:layout_height="@dimen/_60ssp"
+        android:background="@color/yellow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_sound"
+        android:layout_width="@dimen/_40ssp"
+        android:layout_height="@dimen/_40ssp"
+        android:layout_marginStart="@dimen/_16ssp"
+        android:background="@color/yellow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sound"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_play"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_setting"
+        android:layout_width="@dimen/_40ssp"
+        android:layout_height="@dimen/_40ssp"
+        android:layout_marginEnd="@dimen/_16ssp"
+        android:background="@color/yellow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/setting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_play"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bingfish"
+        android:text="Guess it"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_50ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10ssp"
+        android:text="version 1.0.0"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
