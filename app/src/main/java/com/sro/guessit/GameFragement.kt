@@ -40,8 +40,8 @@ class GameFragement : Fragment() {
     private var startTime: Long = 0
 
     private lateinit var list: MutableList<EditText>
-    private var isRunning = false
     private lateinit var handler: Handler
+    private var isRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +58,8 @@ class GameFragement : Fragment() {
     ): View? {
         currentLevel = requireArguments().getInt(ARG_LEVEL)
         val view: View
-        stopwatchJob = Job()
         handler = Handler()
+        startStopwatch()
         when (currentLevel) {
             1 -> {
                 view = inflater.inflate(R.layout.fragment_game_level1, container, false)
@@ -69,7 +69,7 @@ class GameFragement : Fragment() {
                     view.findViewById(R.id.ed3),
                     view.findViewById(R.id.ed4)
                 )
-                initializeLevel("CAKE", list)
+                initializeLevel("CAKE", list, 2)
             }
 
             2 -> {
@@ -81,7 +81,7 @@ class GameFragement : Fragment() {
                     view.findViewById(R.id.ed4),
                     view.findViewById(R.id.ed5),
                 )
-                initializeLevel("BRUSH", list)
+                initializeLevel("BRUSH", list, 3)
             }
 
             3 -> {
@@ -92,23 +92,86 @@ class GameFragement : Fragment() {
                     view.findViewById(R.id.ed3),
                     view.findViewById(R.id.ed4)
                 )
-                initializeLevel("MOON", list)
+                initializeLevel("MOON", list, 4)
             }
 
             4 -> {
                 view = inflater.inflate(R.layout.fragment_game_level4, container, false)
-                initializeLevel4(view)
+                list = mutableListOf<EditText>(
+                    view.findViewById(R.id.ed1),
+                    view.findViewById(R.id.ed2),
+                    view.findViewById(R.id.ed3),
+                    view.findViewById(R.id.ed4),
+                    view.findViewById(R.id.ed5),
+                    view.findViewById(R.id.ed6),
+                    view.findViewById(R.id.ed7),
+                    view.findViewById(R.id.ed8),
+                    view.findViewById(R.id.ed9),
+                    view.findViewById(R.id.ed10)
+                )
+                initializeLevel("GULABJAMUN", list, 5)
             }
 
             5 -> {
                 view = inflater.inflate(R.layout.fragment_game_level5, container, false)
-                initializeLevel5(view)
+                list = mutableListOf<EditText>(
+                    view.findViewById(R.id.ed1),
+                    view.findViewById(R.id.ed2),
+                    view.findViewById(R.id.ed3),
+                    view.findViewById(R.id.ed4)
+                )
+                initializeLevel("ECHO", list, 6)
             }
 
             6 -> {
                 view = inflater.inflate(R.layout.fragment_game_level6, container, false)
-                initializeLevel6(view)
+                list = mutableListOf<EditText>(
+                    view.findViewById(R.id.ed1),
+                    view.findViewById(R.id.ed2),
+                    view.findViewById(R.id.ed3),
+                    view.findViewById(R.id.ed4)
+                )
+                initializeLevel("FIRE", list, 7)
             }
+
+            7 -> {
+                view = inflater.inflate(R.layout.fragment_game_level7, container, false)
+                list = mutableListOf<EditText>(
+                    view.findViewById(R.id.ed1),
+                    view.findViewById(R.id.ed2),
+                    view.findViewById(R.id.ed3)
+                )
+                initializeLevel("MAP", list, 8)
+            }
+
+            8 -> {
+                view = inflater.inflate(R.layout.fragment_game_level8, container, false)
+                list = mutableListOf<EditText>(
+                    view.findViewById(R.id.ed1),
+                    view.findViewById(R.id.ed2),
+                    view.findViewById(R.id.ed3),
+                    view.findViewById(R.id.ed4),
+                    view.findViewById(R.id.ed5),
+                    view.findViewById(R.id.ed6),
+                    view.findViewById(R.id.ed7),
+                    view.findViewById(R.id.ed8)
+                )
+                initializeLevel("KEYBOARD", list, 9)
+            }
+
+            9 -> {
+                view = inflater.inflate(R.layout.fragment_game_level9, container, false)
+                list = mutableListOf<EditText>(
+                    view.findViewById(R.id.ed1),
+                    view.findViewById(R.id.ed2),
+                    view.findViewById(R.id.ed3),
+                    view.findViewById(R.id.ed4),
+                    view.findViewById(R.id.ed5),
+                    view.findViewById(R.id.ed6)
+                )
+                initializeLevel("SQUASH", list, 10)
+            }
+
 
             else -> {
                 view = inflater.inflate(R.layout.fragment_game_level50, container, false)
@@ -119,31 +182,44 @@ class GameFragement : Fragment() {
         return view
     }
 
-    fun resetStopwatch(view: TextView) {
+    private fun initializeLevel50(view: View?) {
+
+    }
+
+    fun stopStopwatch() {
+        isRunning = false
+        handler.removeCallbacks(updateTime)
+    }
+
+    fun resetStopwatch() {
         isRunning = false
         elapsedTime = 0
-        updateText(view)
+        updateText(view?.findViewById(R.id.timer)!!)
     }
 
     private fun updateText(textViewStopwatch: TextView) {
         val seconds = (elapsedTime / 1000).toInt()
-        val minutes = seconds / 60
+        val hours = seconds / 3600
+        val minutes = (seconds % 3600) / 60
         val remainingSeconds = seconds % 60
-        val timeFormatted = String.format("%02d:%02d", minutes, remainingSeconds)
+
+        val timeFormatted = String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds)
+
+
         textViewStopwatch.text = timeFormatted
     }
 
-    fun startStopwatch(view: View) {
-        if (isRunning) {
-            // Stopwatch is already running, stop it
-            isRunning = false
-            handler.removeCallbacks(updateTime)
-        } else {
-            // Stopwatch is not running, start it
-            isRunning = true
-            handler.postDelayed(updateTime, 0)
-        }
+
+    fun starSystem() {
+
     }
+
+    fun startStopwatch() {
+        isRunning = true
+        startTime = SystemClock.elapsedRealtime()
+        handler.postDelayed(updateTime, 0)
+    }
+
 
     private val updateTime: Runnable = object : Runnable {
         override fun run() {
@@ -157,143 +233,16 @@ class GameFragement : Fragment() {
         }
     }
 
-    private fun initializeLevel50(view: View?) {
-
+    override fun onPause() {
+        super.onPause()
+        resetStopwatch()
     }
 
-    private fun initializeLevel6(view: View?) {
-
-    }
-
-    private fun initializeLevel5(view: View) {
-
-    }
-
-    private fun initializeLevel4(view: View) {
-
-    }
-
-    private fun initializeLevel3(view: View) {
-
-    }
-
-    private fun initializeLevel2(view: View) {
+    
 
 
-        startStopwatch(view)
+    private fun initializeLevel(answer: String, editTexts: MutableList<EditText>, nextLevel: Int) {
 
-        var n = 0
-        val answer = "BRUSH"
-        var currentWord = ""
-        val editText1: EditText = view.findViewById(R.id.ed1)
-        val editText2: EditText = view.findViewById(R.id.ed2)
-        val editText3: EditText = view.findViewById(R.id.ed3)
-        val editText4: EditText = view.findViewById(R.id.ed4)
-        val editText5: EditText = view.findViewById(R.id.ed5)
-
-        val editTexts = mutableListOf(editText1, editText2, editText3, editText4, editText5)
-
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                charSequence: CharSequence,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                if (before > 0) {
-                    handleBackspacePress(charSequence, start)
-                }
-            }
-
-            override fun onTextChanged(
-                charSequence: CharSequence,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                if (count == 1) {
-                    val upperCaseChar = charSequence.toString().toUpperCase()
-                    currentWord += upperCaseChar
-
-                    for (i in n until editTexts.size - 1) {
-                        n = i + 1
-                        if ((i + 1) < answer.length && editTexts[i + 1].text.toString() == "") {
-                            editTexts[i + 1].requestFocus()
-                            if (currentWord == answer) {
-                                handleCorrectAnswer(view)
-                            }
-                            break
-                        } else {
-                            currentWord += editTexts[i + 1].text.toString()
-                            if (currentWord == answer) {
-                                handleCorrectAnswer(view)
-                            }
-                        }
-                    }
-                }
-            }
-
-            override fun afterTextChanged(editable: Editable) {
-                if (currentWord == answer) {
-                    handleCorrectAnswer(view)
-                }
-            }
-
-            private fun handleBackspacePress(charSequence: CharSequence, start: Int) {
-                if (start == 0) {
-                    for (i in 1 until editTexts.size) {
-                        if (charSequence.hashCode() == editTexts[i].text.hashCode() && editTexts[i - 1].text.toString() == "") {
-                            editTexts[i - 1].requestFocus()
-                            break
-                        }
-                    }
-                }
-            }
-
-            private fun handleCorrectAnswer(view: View) {
-                val inputMethodManager =
-                    view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-
-                var levelList = getLevelList("levels")
-                levelList = levelList + 3
-                saveLevelList("levels", levelList)
-
-                Dialog.show(context, object : Dialog.CustomDialogInterface {
-
-                    override fun onPositiveButtonClick(
-                        dialog: android.app.Dialog?,
-                        text: String?,
-                        redStar: ImageView?,
-                        yellowStar: ImageView?,
-                        greenStar: ImageView?
-                    ) {
-                        redStar?.visibility = View.VISIBLE
-                    }
-
-                })
-            }
-        }
-
-        editText1.addTextChangedListener(textWatcher)
-        editText2.addTextChangedListener(textWatcher)
-        editText3.addTextChangedListener(textWatcher)
-        editText4.addTextChangedListener(textWatcher)
-        editText5.addTextChangedListener(textWatcher)
-    }
-
-
-    private fun updateTextView() {
-        val seconds = elapsedTime / 1000
-        val minutes = seconds / 60
-        val hours = minutes / 60
-
-        val formattedTime = String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60)
-     }
-
-
-
-    private fun initializeLevel(answer: String, editTexts: MutableList<EditText>) {
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(
                 charSequence: CharSequence,
@@ -318,22 +267,37 @@ class GameFragement : Fragment() {
                         val inputMethodManager =
                             editTexts[0].context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                         inputMethodManager.hideSoftInputFromWindow(editTexts[0].windowToken, 0)
-
+                        stopStopwatch()
                         var levelList = getLevelList("levels")
-                        levelList = levelList + 2
+                        levelList = levelList + nextLevel
                         saveLevelList("levels", levelList)
+                        var level = nextLevel - 1
+                        var timearray = IntArray(3)
+                        timearray =
+                            splitTime(view?.findViewById<TextView>(R.id.timer)?.text.toString()!!)
 
-                        Dialog.show(context, object : Dialog.CustomDialogInterface {
+                        if (timearray[0] == 0 && timearray[1] == 0 && timearray[2] != 0) {
+                            level = 3
+                        } else if (timearray[0] == 0 && timearray[1] <=3 && timearray[2] != 0) {
+                            level = 2
+                        } else {
+                            level = 1
+                        }
+
+
+                        Dialog.show(context, level, object : Dialog.CustomDialogInterface {
                             override fun onPositiveButtonClick(
-                                dialog: android.app.Dialog?,
+                                dialog: Dialog?,
                                 text: String?,
                                 redStar: ImageView?,
                                 yellowStar: ImageView?,
                                 greenStar: ImageView?
                             ) {
-                                redStar?.visibility = View.VISIBLE
+
                             }
+
                         })
+
                     } else {
                         if (isNotNullEditext(editTexts)) {
                             Toast.makeText(context, "Wrong Answer", Toast.LENGTH_SHORT).show()
@@ -371,6 +335,20 @@ class GameFragement : Fragment() {
         for (i in 0 until editTexts.size) {
             editTexts[i].addTextChangedListener(textWatcher)
         }
+    }
+
+    fun splitTime(text: String): IntArray {
+        val timeComponents = text.split(":").toTypedArray()
+        val timeIntArray = IntArray(3)
+
+        // Ensure that there are at least 3 components (hours, minutes, seconds)
+        if (timeComponents.size >= 3) {
+            timeIntArray[0] = timeComponents[0].toIntOrNull() ?: 0 // Hours
+            timeIntArray[1] = timeComponents[1].toIntOrNull() ?: 0 // Minutes
+            timeIntArray[2] = timeComponents[2].toIntOrNull() ?: 0 // Seconds
+        }
+
+        return timeIntArray
     }
 
     private fun isNotNullEditext(editTexts: MutableList<EditText>): Boolean {

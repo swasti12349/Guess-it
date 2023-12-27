@@ -20,7 +20,7 @@ class DialogFragment : DialogFragment() {
 
         val customButton = customView.findViewById<ImageButton>(R.id.nextlevel)
 
-        customButton.setOnClickListener { // Handle button click
+        customButton.setOnClickListener {
             onCustomButtonClick()
         }
 
