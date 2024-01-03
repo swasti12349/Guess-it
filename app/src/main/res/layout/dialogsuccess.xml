@@ -27,7 +27,6 @@
             android:background="@color/yellow"
             android:layout_height="wrap_content">
 
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,7 +81,8 @@
                     android:layout_height="@dimen/_60sdp"
                     android:scaleType="centerCrop"
                     android:id="@+id/nextlevel"
-                    android:src="@drawable/nextbtn"
+                    android:background="@color/yellow"
+                    android:src="@drawable/next"
                     android:layout_marginTop="@dimen/_10sdp"/>
 
             </LinearLayout>

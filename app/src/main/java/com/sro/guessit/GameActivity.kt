@@ -16,7 +16,7 @@ class GameActivity : AppCompatActivity() {
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        level = intent.getStringExtra("selectedLevel").toString()
+        level = intent.getIntExtra("selectedLevel", 0).toString()
 
         loadLevelFragment(Integer.parseInt(level))
 

@@ -22,10 +22,22 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_margin="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Hint: 10"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView"
@@ -58,10 +70,12 @@
             android:id="@+id/ed1"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:gravity="center"
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
+
             android:text="S"
             android:textColor="@color/black"
             android:textSize="@dimen/_24ssp"
@@ -71,10 +85,11 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:gravity="center"
             android:imeOptions="actionNone"
-            android:inputType="textCapCharacters"
             android:maxLength="1"
+
             android:padding="8dp"
             android:text="Q"
             android:textColor="@color/black"
@@ -135,4 +150,13 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/hintl"
+        layout="@layout/hintlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:visibility="invisible" />
 </RelativeLayout>

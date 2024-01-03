@@ -22,10 +22,23 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_margin="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint"
+        android:id="@+id/hintbal"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:text="Hint: 10" />
 
     <TextView
         android:id="@+id/textView"
@@ -76,6 +89,8 @@
             android:inputType="none"
             android:maxLength="1"
             android:padding="8dp"
+            android:editable="false"
+
             android:text="E"
             android:textColor="@color/black"
             android:textSize="@dimen/_24ssp"
@@ -156,9 +171,20 @@
             android:maxLength="1"
             android:padding="8dp"
             android:text="D"
+            android:editable="false"
+
             android:textColor="@color/black"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/hintl"
+        layout="@layout/hintlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:visibility="invisible" />
 </RelativeLayout>

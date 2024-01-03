@@ -21,13 +21,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_sound"
+        android:id="@+id/exit"
         android:layout_width="@dimen/_40ssp"
         android:layout_height="@dimen/_40ssp"
         android:layout_marginStart="@dimen/_16ssp"
         android:background="@color/yellow"
         android:scaleType="centerCrop"
-        android:src="@drawable/sound"
+        android:src="@drawable/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_play"
         app:layout_constraintTop_toTopOf="parent" />

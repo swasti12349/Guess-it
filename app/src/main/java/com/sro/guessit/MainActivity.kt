@@ -12,8 +12,11 @@ import com.sro.guessit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var sound: MediaPlayer
-    private var isSound = true
+
+    companion object {
+        lateinit var sound: MediaPlayer
+    }
+
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,25 +30,23 @@ class MainActivity : AppCompatActivity() {
         sound.start()
         sound.isLooping = true
 
-        binding.btnSound.setOnClickListener {
-            if (isSound) {
-                sound.pause()
-                binding.btnSound.setImageResource(R.drawable.mute)
-            } else {
-                sound.start()
-                binding.btnSound.setImageResource(R.drawable.sound)
-            }
-            isSound = !isSound
+        binding.exit.setOnClickListener {
+            System.exit(0)
         }
 
         binding.btnPlay.setOnClickListener {
             startActivity(Intent(this@MainActivity, LevelActivity::class.java))
         }
 
+        binding.btnSetting.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+        }
+
+
         if (getLevelList("levels").isNullOrEmpty()) {
             saveLevelList("levels", listOf(1))
         } else {
-         }
+        }
     }
 
     fun saveLevelList(key: String, list: List<Int>) {

@@ -15,10 +15,18 @@
         android:background="@drawable/backcircle"
         android:gravity="center"
         android:padding="@dimen/_10sdp"
-        android:text="34"
+        android:text="9"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/_30ssp"
         android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:id="@+id/lock"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:src="@drawable/lock"/>
 
 </RelativeLayout>

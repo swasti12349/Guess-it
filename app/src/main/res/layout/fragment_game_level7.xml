@@ -22,11 +22,22 @@
         android:textSize="@dimen/_30ssp"/>
 
     <ImageView
+        android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_margin="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:text="Hint: 10" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -38,6 +49,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
+        android:layout_margin="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,4 +104,12 @@
             android:textStyle="bold" />
 
      </LinearLayout>
+    <include
+        android:id="@+id/hintl"
+        layout="@layout/hintlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:visibility="invisible" />
 </RelativeLayout>

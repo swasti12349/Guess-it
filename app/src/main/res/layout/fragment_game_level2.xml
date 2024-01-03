@@ -8,24 +8,37 @@
     tools:context=".GameActivity">
 
     <TextView
+        android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timer"
-        android:gravity="end"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:text="0:0"
+        android:gravity="end"
         android:padding="@dimen/_10sdp"
+        android:text="0:0"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/_30ssp"/>
+        android:textSize="@dimen/_30ssp"
+        android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_margin="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
+
+    <TextView
+        android:id="@+id/hintbal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Hint: 10"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView"
@@ -33,9 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/timer"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_20sdp"
         android:text="It is a thing which we usually use in the morning"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -70,12 +83,12 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:gravity="center"
             android:imeOptions="actionNext"
-            android:text="R"
-            android:editable="false"
             android:maxLength="1"
             android:padding="8dp"
+            android:text="R"
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
@@ -111,14 +124,22 @@
             android:id="@+id/ed5"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:gravity="center"
             android:imeOptions="actionDone"
-            android:editable="false"
             android:maxLength="1"
-            android:text="H"
             android:padding="8dp"
+            android:text="H"
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
     </LinearLayout>
+    <include
+        android:id="@+id/hintl"
+        layout="@layout/hintlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:visibility="invisible" />
 </RelativeLayout>

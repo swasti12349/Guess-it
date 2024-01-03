@@ -10,7 +10,7 @@ import com.google.gson.reflect.TypeToken
 import com.sro.guessit.databinding.ActivityLevelBinding
 
 class LevelActivity : AppCompatActivity() {
-    lateinit var levels: ArrayList<String>
+    lateinit var levels: ArrayList<Int>
     lateinit var binding: ActivityLevelBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var levelList: List<Int>
@@ -21,7 +21,7 @@ class LevelActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         for (i in 1..50) {
-            levels.add(i.toString())
+            levels.add(i)
         }
 
         levelList = getLevelList("levels")
