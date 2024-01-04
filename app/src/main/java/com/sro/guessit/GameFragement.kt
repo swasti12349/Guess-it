@@ -1,11 +1,14 @@
 package com.sro.guessit
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.SystemClock
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +20,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Job
@@ -54,13 +62,15 @@ class GameFragement : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         currentLevel = requireArguments().getInt(ARG_LEVEL)
-        val view: View
+        var view: View
         handler = Handler()
         startStopwatch()
 
         when (currentLevel) {
             1 -> {
                 view = inflater.inflate(R.layout.fragment_game_level1, container, false)
+                initializeMobilAds(view)
+
                 list = mutableListOf<EditText>(
                     view.findViewById(R.id.ed1),
                     view.findViewById(R.id.ed2),
@@ -68,11 +78,12 @@ class GameFragement : Fragment() {
                     view.findViewById(R.id.ed4)
                 )
 
-
                 view.findViewById<ImageView>(R.id.hint).setOnClickListener {
                     hintSystem("CAKE")
                 }
                 initializeLevel("CAKE", list, 2, view)
+//                adSystem(view)
+
 
             }
 
@@ -85,11 +96,13 @@ class GameFragement : Fragment() {
                     view.findViewById(R.id.ed4),
                     view.findViewById(R.id.ed5),
                 )
+                initializeMobilAds(view)
 
                 view.findViewById<ImageView>(R.id.hint).setOnClickListener {
                     hintSystem("BRUSH")
                 }
                 initializeLevel("BRUSH", list, 3, view)
+
             }
 
             3 -> {
@@ -100,6 +113,7 @@ class GameFragement : Fragment() {
                     view.findViewById(R.id.ed3),
                     view.findViewById(R.id.ed4)
                 )
+                initializeMobilAds(view)
 
                 view.findViewById<ImageView>(R.id.hint).setOnClickListener {
                     hintSystem("MOON")
@@ -840,14 +854,34 @@ class GameFragement : Fragment() {
                 view.findViewById<ImageView>(R.id.hint).setOnClickListener {
                     hintSystem("INDIA")
                 }
-                initializeLevel("INDIA", list, 0, view)
+                initializeLevel50("INDIA", list, 0, view)
             }
         }
 
         return view
     }
 
+    private fun initializeMobilAds(view: View?) {
+        Handler().postDelayed({
+            MobileAds.initialize(requireContext())
+            view?.findViewById<AdView>(R.id.adView)
+                ?.loadAd(AdRequest.Builder().build())
+        }, 1000)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+
     private fun hintSystem(answer: String) {
+
+        val imm =
+            view?.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
 
         val hinttext = view?.findViewById<TextView>(R.id.hintbal)
         var hintBalance = extractDigits(hinttext?.text.toString())
@@ -915,7 +949,7 @@ class GameFragement : Fragment() {
         val sharedPreferences =
             context?.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
-        return sharedPreferences?.getInt("hintBalanceKey", 6)
+        return sharedPreferences?.getInt("hintBalanceKey", 8)
 
     }
 
@@ -960,11 +994,6 @@ class GameFragement : Fragment() {
                 handler.postDelayed(this, 1000)
             }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        resetStopwatch()
     }
 
 
@@ -1072,6 +1101,127 @@ class GameFragement : Fragment() {
         }
 
 
+    }
+
+
+    private fun initializeLevel50(
+        answer: String,
+        editTexts: MutableList<EditText>,
+        nextLevel: Int,
+        view: View
+    ) {
+
+        val hint = getHintBalance()
+        view.findViewById<TextView>(R.id.hintbal).text = "Hint: $hint"
+
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                charSequence: CharSequence,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                if (before > 0) {
+                    // Handle backspace press
+                    handleBackspacePress(charSequence, start)
+                }
+            }
+
+            override fun onTextChanged(
+                charSequence: CharSequence,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                if (count == 1) {
+                    if (checkAnswer(editTexts) == answer) {
+                        val inputMethodManager =
+                            editTexts[0].context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputMethodManager.hideSoftInputFromWindow(editTexts[0].windowToken, 0)
+                        stopStopwatch()
+                        var levelList = getLevelList("levels")
+                        levelList = levelList + nextLevel
+                        saveLevelList("levels", levelList)
+                        var level = nextLevel - 1
+                        var timearray = IntArray(3)
+                        timearray =
+                            splitTime(view?.findViewById<TextView>(R.id.timer)?.text.toString()!!)
+
+                        if (timearray[0] == 0 && timearray[1] == 0 && timearray[2] != 0) {
+                            level = 3
+                        } else if (timearray[0] == 0 && timearray[1] <= 3 && timearray[2] != 0) {
+                            level = 2
+                        } else {
+                            level = 1
+                        }
+
+
+                        HintDialog.show(context, object : HintDialog.HintDialogInterface {
+                            override fun onYesClickListener(dialog: android.app.Dialog?) {
+                                openPlayStore(context!!)
+                            }
+
+                            override fun onNoClickListener(dialog: android.app.Dialog?) {
+                            }
+                        }, "Do you like it?")
+
+
+                    } else {
+                        if (isNotNullEditext(editTexts)) {
+                            Toast.makeText(context, "Wrong Answer", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    // Set focus to the next EditText
+                    for (i in 0 until editTexts.size - 1) {
+                        if (charSequence.hashCode() == editTexts[i].text.hashCode()) {
+                            editTexts[i + 1].requestFocus()
+                            break
+                        }
+                    }
+                }
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+                // No need to do anything here
+            }
+
+            private fun handleBackspacePress(charSequence: CharSequence, start: Int) {
+                if (start == 0) {
+                    // Move focus to the previous EditText
+                    for (i in 1 until editTexts.size) {
+                        if (charSequence.hashCode() == editTexts[i].text.hashCode()) {
+                            editTexts[i - 1].requestFocus()
+                            break
+                        }
+                    }
+                }
+            }
+        }
+
+        // Add text watchers to all EditTexts
+        for (i in 0 until editTexts.size) {
+            editTexts[i].addTextChangedListener(textWatcher)
+        }
+
+
+    }
+
+    fun openPlayStore(context: Context) {
+        val appPackageName = context.packageName
+        try {
+            context.startActivity(
+                Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName"))
+            )
+        } catch (e: android.content.ActivityNotFoundException) {
+            // If the Play Store app is not available, open the Play Store website
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
+        }
     }
 
     private fun answerReveal(answer: String) {

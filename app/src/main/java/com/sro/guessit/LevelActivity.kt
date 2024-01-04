@@ -3,6 +3,7 @@ package com.sro.guessit
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
@@ -37,6 +38,33 @@ class LevelActivity : AppCompatActivity() {
             val intent = Intent(this@LevelActivity, GameActivity::class.java)
             intent.putExtra("selectedLevel", selectedLevel)
             startActivity(intent)
+        }
+
+        if (levelList.size % 3 == 0) {
+            HintDialog.show(this@LevelActivity, object : HintDialog.HintDialogInterface {
+                override fun onYesClickListener(dialog: android.app.Dialog?) {
+                    openPlayStore(this@LevelActivity)
+                }
+
+                override fun onNoClickListener(dialog: android.app.Dialog?) {
+                }
+            }, "Do you like it?")
+        }
+    }
+
+    fun openPlayStore(context: Context) {
+        val appPackageName = context.packageName
+        try {
+            context.startActivity(
+                Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName"))
+            )
+        } catch (e: android.content.ActivityNotFoundException) {
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
         }
     }
 

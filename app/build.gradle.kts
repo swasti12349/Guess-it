@@ -11,6 +11,7 @@ android {
         applicationId = "com.sro.guessit"
         minSdk = 23
         targetSdk = 33
+        resConfigs("en", "xhdpi")
         versionCode = 1
         versionName = "1.0"
 
@@ -22,11 +23,18 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        debug {
+            splits.abi.isEnable = false
+            splits.density.isEnable = false
+            aaptOptions.cruncherEnabled = false
         }
     }
     compileOptions {
@@ -58,12 +66,7 @@ dependencies {
     implementation("com.intuit.ssp:ssp-android:1.1.0")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-
     implementation("com.google.android.gms:play-services-ads:22.6.0")
-
 
 
 }

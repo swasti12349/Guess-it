@@ -2,8 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.GuessIt" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="android:statusBarColor">@color/primaryColor</item>
     </style>
 z
-    <style name="Theme.GuessIt" parent="Base.Theme.GuessIt" />
+    <style name="Theme.GuessIt" parent="Base.Theme.GuessIt" >
+        <item name="android:statusBarColor">@color/primaryColor</item>
+
+    </style>
 </resources>

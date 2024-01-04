@@ -8,9 +8,30 @@
     tools:context=".GameActivity">
 
     <TextView
+        android:id="@+id/adwatchtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adwatch"
+        android:layout_marginStart="@dimen/_82sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:text="Earn hints"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/bannerunit1" />
+
+    <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/adView"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -22,22 +43,35 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/adwatch"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@id/adView"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_toRightOf="@+id/hint"
+        android:src="@drawable/video" />
+
+    <ImageView
         android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_below="@+id/adView"
         android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
 
     <TextView
+        android:id="@+id/hintbal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/hint"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_18sdp"
-        android:text="Hint: 10" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Hint: 10"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -57,11 +91,11 @@
         tools:layout_editor_absoluteY="158dp" />
 
     <LinearLayout
+        android:id="@+id/firstword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:id="@+id/firstword"
         android:layout_marginTop="@dimen/_60sdp"
         android:orientation="horizontal">
 
@@ -69,13 +103,13 @@
             android:id="@+id/ed1"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="none"
-            android:editable="false"
-            android:text="F"
             android:maxLength="1"
             android:padding="8dp"
+            android:text="F"
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
@@ -110,14 +144,14 @@
             android:id="@+id/ed4"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:gravity="center"
             android:imeOptions="actionDone"
             android:inputType="none"
             android:maxLength="1"
-            android:editable="false"
 
-            android:text="E"
             android:padding="8dp"
+            android:text="E"
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
