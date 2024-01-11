@@ -5,10 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".GameActivity">
+    tools:context=".Activity.GameActivity">
+
     <TextView
         android:id="@+id/adwatchtxt"
         android:layout_width="wrap_content"
+        android:visibility="invisible"
+
         android:layout_height="wrap_content"
         android:layout_below="@id/adwatch"
         android:layout_marginStart="@dimen/_82sdp"
@@ -19,21 +22,13 @@
         android:textStyle="bold" />
 
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/bannerunit1"/>
+
 
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/adView"
-        android:layout_alignParentRight="true"
+         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:gravity="end"
@@ -42,12 +37,14 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_30ssp"
         android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/adView"
-        android:layout_marginStart="@dimen/_30sdp"
+         android:layout_marginStart="@dimen/_30sdp"
+        android:visibility="invisible"
+
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
         android:src="@drawable/video" />
@@ -56,21 +53,21 @@
         android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/adView"
-        android:layout_marginStart="@dimen/_14sdp"
+         android:layout_marginStart="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
 
     <TextView
+        android:id="@+id/hintbal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/hint"
-        android:id="@+id/hintbal"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_18sdp"
-        android:text="Hint: 10" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Hint: 10"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -105,6 +102,9 @@
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="textCapCharacters"
+            android:textCursorDrawable="@drawable/cursor"
+            android:backgroundTint="@color/black"
+
             android:maxLength="1"
             android:padding="8dp"
             android:textColor="@color/black"
@@ -116,6 +116,9 @@
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
             android:editable="false"
+            android:textCursorDrawable="@drawable/cursor"
+            android:backgroundTint="@color/black"
+
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="textCapCharacters"
@@ -135,6 +138,9 @@
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
+
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
@@ -149,6 +155,8 @@
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />

@@ -1,0 +1,19 @@
+<!-- res/drawable/custom_cursor.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Define the thicker cursor line -->
+    <item>
+        <shape android:shape="rectangle">
+            <size android:width="4dp" />
+            <solid android:color="@color/black" />
+        </shape>
+    </item>
+
+    <!-- Define the standard cursor line on top of the thicker one -->
+    <item android:top="1dp">
+        <shape android:shape="rectangle">
+            <size android:width="2dp" />
+            <solid android:color="@color/black" />
+        </shape>
+    </item>
+</layer-list>

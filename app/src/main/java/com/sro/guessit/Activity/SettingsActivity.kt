@@ -1,14 +1,12 @@
-package com.sro.guessit
+package com.sro.guessit.Activity
 
-import android.app.UiModeManager
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import com.sro.guessit.R
 import com.sro.guessit.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -22,10 +20,10 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.btnSound.setOnClickListener {
             if (isSound) {
-                MainActivity.mediaPlayer.pause()
+                MainActivity.music.pause()
                 binding.btnSound.setImageResource(R.drawable.mute)
             } else {
-                MainActivity.mediaPlayer.start()
+                MainActivity.music.start()
                 binding.btnSound.setImageResource(R.drawable.sound)
             }
             isSound = !isSound
@@ -40,5 +38,34 @@ class SettingsActivity : AppCompatActivity() {
 
         }
 
+
+        binding.contact.setOnClickListener {
+            startActivity(Intent(this@SettingsActivity, ContactActivity::class.java))
+        }
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        MainActivity.music.pause()
+        Log.d("sdfssf", "constop")
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed(Runnable {
+            MainActivity.music.start()
+        }, 800)
+
+        Log.d("sdfssf", "conresume")
+
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        MainActivity.music.start()
+        Log.d("sdfssf", "conrestart")
     }
 }

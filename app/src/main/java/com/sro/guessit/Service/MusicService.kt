@@ -1,4 +1,4 @@
-package com.sro.guessit
+package com.sro.guessit.Service
 
 import android.app.Service
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
+import com.sro.guessit.R
 
 class MusicService : Service() {
     private lateinit var sound: MediaPlayer

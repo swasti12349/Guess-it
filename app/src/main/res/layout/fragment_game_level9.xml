@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".GameActivity">
+    tools:context=".Activity.GameActivity">
 
     <TextView
         android:id="@+id/adwatchtxt"
@@ -23,7 +23,7 @@
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_45sdp"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
         ads:adUnitId="@string/bannerunit4" />
@@ -51,13 +51,13 @@
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
-        android:src="@drawable/video" />
+        android:src="@drawable/video"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/adView"
         android:layout_marginStart="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
@@ -104,14 +104,17 @@
             android:id="@+id/ed1"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+
             android:editable="false"
             android:gravity="center"
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
-
             android:text="S"
+
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
@@ -119,14 +122,17 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:editable="false"
             android:gravity="center"
+
             android:imeOptions="actionNone"
             android:maxLength="1"
-
             android:padding="8dp"
+
             android:text="Q"
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
@@ -134,12 +140,15 @@
             android:id="@+id/ed3"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
+
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:text=""
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
@@ -148,12 +157,15 @@
             android:id="@+id/ed4"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:text=""
+
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
@@ -161,12 +173,15 @@
             android:id="@+id/ed5"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:text=""
+
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
@@ -174,12 +189,15 @@
             android:id="@+id/ed6"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:inputType="textCapCharacters"
             android:maxLength="1"
+
             android:padding="8dp"
             android:text=""
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 

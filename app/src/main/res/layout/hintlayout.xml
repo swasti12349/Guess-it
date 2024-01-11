@@ -13,9 +13,11 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:text="Use letters from this pool"
+        android:fontFamily="@font/gamingfont"
+        android:padding="@dimen/_2sdp"
+        android:text="Use letters from below"
         android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_16ssp"
         android:textStyle="italic" />
 
     <LinearLayout
@@ -26,10 +28,11 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/letters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="A B F H R T D G E Y L"
-            android:id="@+id/letters"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_26ssp"

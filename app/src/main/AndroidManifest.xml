@@ -14,24 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GuessIt"
         tools:targetApi="31">
-
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activity.ContactActivity"
             android:exported="false" />
         <activity
-            android:name=".GameActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".LevelActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".LandingActivity"
+            android:name=".Activity.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LevelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,10 +44,8 @@
             android:value="@string/appid" />
 
         <service
-            android:name=".MusicService"
+            android:name=".Service.MusicService"
             android:enabled="true" />
-
     </application>
-
 
 </manifest>

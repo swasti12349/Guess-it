@@ -1,7 +1,6 @@
-package com.sro.guessit
+package com.sro.guessit.Adapter
 
 import android.content.Context
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.sro.guessit.R
 
 class GridAdapter(
     private val context: Context,
@@ -42,7 +42,6 @@ class GridAdapter(
         val textView = convertedView!!.findViewById<TextView>(R.id.levelnumber)
         val lock = convertedView.findViewById<ImageView>(R.id.lock)
         textView.text = data[position].toString()
-
 
         convertedView.isClickable = !levelList.contains(position + 1)
         lock.isVisible = !levelList.contains(position + 1)

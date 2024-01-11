@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".GameActivity">
+    tools:context=".Activity.GameActivity">
     <TextView
         android:id="@+id/adwatchtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/adwatch"
+        android:visibility="invisible"
         android:layout_marginStart="@dimen/_82sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:text="Earn hints"
@@ -20,21 +21,12 @@
 
 
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/bannerunit4"/>
 
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/adView"
-        android:layout_alignParentRight="true"
+         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:gravity="end"
@@ -47,8 +39,8 @@
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/adView"
-        android:layout_marginStart="@dimen/_30sdp"
+         android:layout_marginStart="@dimen/_30sdp"
+        android:visibility="invisible"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
         android:src="@drawable/video" />
@@ -57,8 +49,7 @@
         android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/adView"
-        android:layout_marginStart="@dimen/_14sdp"
+         android:layout_marginStart="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
     <TextView
@@ -103,6 +94,9 @@
             android:id="@+id/ed1"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:textCursorDrawable="@drawable/cursor"
+            android:backgroundTint="@color/black"
+
             android:gravity="center"
             android:inputType="textCapCharacters"
             android:maxLength="1"
@@ -116,6 +110,9 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="wrap_content"
+            android:textCursorDrawable="@drawable/cursor"
+            android:backgroundTint="@color/black"
+
             android:editable="false"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -136,6 +133,8 @@
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:text=""
             android:textColor="@color/black"
             android:textSize="@dimen/_24ssp"
@@ -150,6 +149,8 @@
             android:inputType="textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:text=""
             android:textColor="@color/black"
             android:textSize="@dimen/_24ssp"
@@ -163,6 +164,8 @@
             android:gravity="center"
             android:inputType="none"
             android:maxLength="1"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:padding="8dp"
             android:text="K"
             android:textColor="@color/black"

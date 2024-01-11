@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".GameActivity">
+    tools:context=".Activity.GameActivity">
+
     <TextView
         android:id="@+id/adwatchtxt"
         android:layout_width="wrap_content"
@@ -16,23 +17,13 @@
         android:text="Earn hints"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp"
-        android:textStyle="bold" />
-
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/bannerunit3"/>
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/adView"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -42,46 +33,48 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_30ssp"
         android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/adView"
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
-        android:src="@drawable/video" />
+        android:src="@drawable/video"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/adView"
         android:layout_marginStart="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
+
     <TextView
+        android:id="@+id/hintbal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/hint"
-        android:textStyle="bold"
-        android:id="@+id/hintbal"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_18sdp"
-        android:text="Hint: 10" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Hint: 10"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/timer"
         android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:text="I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
-        android:layout_margin="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,13 +92,16 @@
             android:id="@+id/ed1"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="M"
+            android:backgroundTint="@color/black"
             android:editable="false"
+            android:gravity="center"
             android:inputType="none"
             android:maxLength="1"
+
             android:padding="8dp"
+            android:text="M"
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -113,12 +109,16 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:imeOptions="actionNext"
+
             android:inputType="text|textCapCharacters"
+
             android:maxLength="1"
             android:padding="8dp"
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -126,16 +126,20 @@
             android:id="@+id/ed3"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:textColor="@color/black"
+
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
-     </LinearLayout>
+    </LinearLayout>
+
     <include
         android:id="@+id/hintl"
         layout="@layout/hintlayout"

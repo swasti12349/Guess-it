@@ -1,4 +1,4 @@
-package com.sro.guessit
+package com.sro.guessit.Dialog
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.sro.guessit.R
 
 class HintDialog {
     interface HintDialogInterface {

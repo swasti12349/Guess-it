@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LevelActivity"
-    android:background="@color/yellow">
+    android:background="@color/yellow"
+    tools:context=".Activity.LevelActivity">
 
-    <GridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/levelsGV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="3"
-        android:verticalSpacing="8dp"
+        android:gravity="center"
         android:horizontalSpacing="8dp"
-        tools:listitem="@layout/grid_item"
+        android:numColumns="3"
         android:padding="16dp"
-        android:gravity="center"/>
-    
+        android:verticalSpacing="8dp"
+        tools:listitem="@layout/grid_item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
