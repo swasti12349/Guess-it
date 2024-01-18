@@ -23,16 +23,15 @@
         android:textStyle="bold" />
 
 
-
     <ImageView
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
-        android:visibility="invisible"
         android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
-        android:src="@drawable/video" />
+        android:src="@drawable/video"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/hint"
@@ -52,10 +51,10 @@
         android:text="Hint: 10"
         android:textColor="@color/black"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/adwatchtxt"
         android:layout_width="wrap_content"
-        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:layout_below="@id/adwatch"
         android:layout_marginStart="@dimen/_82sdp"
@@ -63,7 +62,8 @@
         android:text="Earn hints"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/textView"
@@ -88,22 +88,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/ed1"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textCursorDrawable="@drawable/cursor"
             android:backgroundTint="@color/black"
-
+            android:gravity="center"
             android:imeOptions="actionNext"
+
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -111,16 +111,16 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:textCursorDrawable="@drawable/cursor"
             android:backgroundTint="@color/black"
-
             android:editable="false"
+
             android:gravity="center"
             android:imeOptions="actionNext"
             android:maxLength="1"
             android:padding="8dp"
             android:text="R"
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -128,15 +128,15 @@
             android:id="@+id/ed3"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:textColor="@color/black"
-            android:textSize="@dimen/_30ssp"
             android:textCursorDrawable="@drawable/cursor"
-            android:backgroundTint="@color/black"
+            android:textSize="@dimen/_30ssp"
 
             android:textStyle="bold" />
 
@@ -144,15 +144,15 @@
             android:id="@+id/ed4"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
-            android:textCursorDrawable="@drawable/cursor"
-            android:backgroundTint="@color/black"
-
             android:padding="8dp"
+
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -161,10 +161,10 @@
             android:id="@+id/ed5"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:editable="false"
             android:gravity="center"
             android:imeOptions="actionDone"
-            android:backgroundTint="@color/black"
             android:maxLength="1"
             android:padding="8dp"
 
@@ -180,6 +180,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/dim_1"
         android:visibility="invisible" />
 </RelativeLayout>

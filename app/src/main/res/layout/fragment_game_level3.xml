@@ -13,13 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/adwatch"
         android:layout_marginStart="@dimen/_82sdp"
-        android:visibility="invisible"
         android:layout_marginTop="@dimen/_4sdp"
         android:text="Earn hints"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
 
     <TextView
@@ -41,17 +40,17 @@
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:visibility="invisible"
-        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
-        android:src="@drawable/video" />
+        android:src="@drawable/video"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/hint"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-         android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_14sdp"
         android:src="@drawable/lightbulb" />
 
@@ -84,8 +83,8 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_width="@dimen/dim_90"
+        android:layout_height="@dimen/dim_30"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_20sdp"
@@ -103,16 +102,16 @@
             android:id="@+id/ed1"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textCursorDrawable="@drawable/cursor"
             android:backgroundTint="@color/black"
-
+            android:gravity="center"
             android:imeOptions="actionNext"
+
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
             android:text=""
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -120,16 +119,16 @@
             android:id="@+id/ed2"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:textCursorDrawable="@drawable/cursor"
             android:backgroundTint="@color/black"
-
             android:gravity="center"
+
             android:imeOptions="actionNext"
             android:inputType="text|textCapCharacters"
             android:maxLength="1"
             android:padding="8dp"
-
             android:textColor="@color/black"
+
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -137,6 +136,7 @@
             android:id="@+id/ed3"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="text|textCapCharacters"
@@ -144,7 +144,6 @@
             android:padding="8dp"
             android:textColor="@color/black"
             android:textCursorDrawable="@drawable/cursor"
-            android:backgroundTint="@color/black"
 
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
@@ -153,6 +152,7 @@
             android:id="@+id/ed4"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:editable="false"
             android:gravity="center"
             android:imeOptions="actionDone"
@@ -161,9 +161,6 @@
             android:text="N"
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
-
-            android:backgroundTint="@color/black"
-
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -173,6 +170,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/dim_1"
         android:visibility="invisible" />
 </RelativeLayout>

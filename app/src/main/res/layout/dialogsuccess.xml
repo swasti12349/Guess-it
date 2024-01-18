@@ -78,8 +78,8 @@
 
                 <ImageButton
                     android:id="@+id/nextlevel"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@color/yellow"
                     android:scaleType="centerCrop"

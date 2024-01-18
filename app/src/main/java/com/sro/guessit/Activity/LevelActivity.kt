@@ -20,11 +20,13 @@ class LevelActivity : AppCompatActivity() {
     lateinit var binding: ActivityLevelBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var levelList: List<Int>
-
+    private lateinit var playstorelevellist: List<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         levels = ArrayList()
+        playstorelevellist = ArrayList()
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
 
         for (i in 1..50) {
             levels.add(i)
@@ -45,7 +47,7 @@ class LevelActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        if (levelList.size % 5 == 0) {
+        if (levelList.size % 8 == 0) {
             HintDialog.show(this@LevelActivity, object : HintDialog.HintDialogInterface {
                 override fun onYesClickListener(dialog: Dialog?) {
                     openPlayStore(this@LevelActivity)
@@ -79,13 +81,20 @@ class LevelActivity : AppCompatActivity() {
         super.onResume()
 
 
-        Handler().postDelayed(Runnable {
-            levelList = getLevelList("levels")
-            val adapter = GridAdapter(this, levels, levelList)
-            binding.levelsGV.adapter = adapter
-            MainActivity.music.start()
-            Log.d("sdfssf", "levres")
-        }, 800)
+        levelList = getLevelList("levels")
+        val adapter = GridAdapter(this, levels, levelList)
+        binding.levelsGV.adapter = adapter
+        Log.d("sdfssf", "levres")
+
+
+        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)) {
+            Handler().postDelayed(Runnable {
+
+                MainActivity.music.start()
+
+            }, 800)
+
+        }
 
     }
 
@@ -98,12 +107,12 @@ class LevelActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
+        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)) {
 
+            MainActivity.music.start()
+            Log.d("sdfssf", "levrestart")
 
-        MainActivity.music.start()
-        Log.d("sdfssf", "levrestart")
-
-
+        }
     }
 
     private fun getLevelList(key: String): List<Int> {

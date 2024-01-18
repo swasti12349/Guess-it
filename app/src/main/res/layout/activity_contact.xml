@@ -17,7 +17,7 @@
         android:fontFamily="@font/gamingfont"
         android:text="Contact Information"
         android:textColor="@color/black"
-        android:textSize="@dimen/_30sdp"
+        android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,7 +36,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="118dp">

@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         music = MediaPlayer.create(this, R.raw.gamebackmusic)
         music.isLooping = true
 
-        music.start()
+
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         binding.exit.setOnClickListener {
@@ -72,19 +72,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Handler().postDelayed(Runnable {
-            music.start()
-        }, 800)
 
+        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)) {
+            Handler().postDelayed(Runnable {
+                music.start()
+            }, 800)
+        }
         Log.d("sdfssf", "mainresume")
 
     }
 
     override fun onRestart() {
         super.onRestart()
-        music.start()
-        Log.d("sdfssf", "mainrestart")
 
+        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)) {
+            music.start()
+            Log.d("sdfssf", "mainrestart")
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 package com.sro.guessit.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,22 +12,21 @@ import com.sro.guessit.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
     lateinit var binding: ActivitySettingsBinding
-    private var isSound = true
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnSound.setOnClickListener {
-            if (isSound) {
+            if (getSettings()) {
                 MainActivity.music.pause()
                 binding.btnSound.setImageResource(R.drawable.mute)
+                saveSettings(false)
             } else {
+                saveSettings(true)
                 MainActivity.music.start()
                 binding.btnSound.setImageResource(R.drawable.sound)
             }
-            isSound = !isSound
         }
 
         binding.privacy.setOnClickListener {
@@ -45,6 +45,24 @@ class SettingsActivity : AppCompatActivity() {
     }
 
 
+    public fun saveSettings(isSound: Boolean) {
+
+
+        val sharedPreferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        if (!isSound) {
+            editor.putBoolean("music", false)
+        } else {
+            editor.putBoolean("music", true)
+        }
+        editor.apply()
+    }
+
+    public fun getSettings(): Boolean {
+        return getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)
+    }
+
     override fun onStop() {
         super.onStop()
         MainActivity.music.pause()
@@ -55,17 +73,22 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Handler().postDelayed(Runnable {
-            MainActivity.music.start()
-        }, 800)
 
+        if (getSettings()) {
+            Handler().postDelayed(Runnable {
+                MainActivity.music.start()
+            }, 800)
+        }
         Log.d("sdfssf", "conresume")
 
     }
 
     override fun onRestart() {
         super.onRestart()
-        MainActivity.music.start()
-        Log.d("sdfssf", "conrestart")
+
+        if (getSettings()) {
+            MainActivity.music.start()
+            Log.d("sdfssf", "conrestart")
+        }
     }
 }

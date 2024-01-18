@@ -25,11 +25,9 @@ class GameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initializeMobilAds()
-        MainActivity.music.start()
         level = intent.getIntExtra("selectedLevel", 0).toString()
 
-//        loadLevelFragment(Integer.parseInt(level))
-//        loadLevelFragment(1)
+
         loadFragment()
     }
 
@@ -48,12 +46,13 @@ class GameActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        Handler().postDelayed(Runnable {
-            MainActivity.music.start()
-            Log.d("sdfssf", "mainresume")
+        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)) {
+            Handler().postDelayed(Runnable {
+                MainActivity.music.start()
+                Log.d("sdfssf", "mainresume")
 
-        }, 800)
-
+            }, 800)
+        }
 
     }
 
@@ -83,9 +82,10 @@ class GameActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        MainActivity.music.start()
-        Log.d("sdfssf", "gameresume")
-
+        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("music", true)) {
+            MainActivity.music.start()
+            Log.d("sdfssf", "gameresume")
+        }
 
     }
 

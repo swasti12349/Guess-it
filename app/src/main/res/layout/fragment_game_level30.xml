@@ -47,7 +47,7 @@
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-         android:layout_marginStart="@dimen/_30sdp"
+         android:layout_marginStart="@dimen/_20sdp"
         android:visibility="invisible"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
@@ -232,6 +232,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/dim_1"
         android:visibility="invisible" />
 </RelativeLayout>

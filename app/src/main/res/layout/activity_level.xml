@@ -18,5 +18,5 @@
         tools:listitem="@layout/grid_item"
         android:padding="16dp"
         android:gravity="center"/>
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
