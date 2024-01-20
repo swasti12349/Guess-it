@@ -68,7 +68,6 @@ class LevelFragment : Fragment() {
         binding.levelsGV.setOnItemClickListener { parent, view, position, id ->
             val selectedLevel = levels[position]
 
-
             val bundle = Bundle()
             bundle.putInt("selectedLevel", selectedLevel)
             val fragmentB = GameFragement()

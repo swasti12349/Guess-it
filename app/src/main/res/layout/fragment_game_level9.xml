@@ -26,7 +26,6 @@
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/adView"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -41,7 +40,6 @@
         android:id="@+id/adwatch"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/adView"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_toRightOf="@+id/hint"
@@ -173,7 +171,6 @@
             android:maxLength="1"
             android:padding="8dp"
             android:text=""
-
             android:textColor="@color/black"
             android:textCursorDrawable="@drawable/cursor"
             android:textSize="@dimen/_24ssp"

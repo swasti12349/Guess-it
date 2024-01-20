@@ -154,7 +154,16 @@ class GameFragement : Fragment() {
             30 to Triple(
                 "MOSQUITO",
                 31,
-                listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6, R.id.ed7)
+                listOf(
+                    R.id.ed1,
+                    R.id.ed2,
+                    R.id.ed3,
+                    R.id.ed4,
+                    R.id.ed5,
+                    R.id.ed6,
+                    R.id.ed7,
+                    R.id.ed8
+                )
             ),
             31 to Triple(
                 "DOCTOR",
@@ -205,13 +214,14 @@ class GameFragement : Fragment() {
                     R.id.ed5,
                     R.id.ed6,
                     R.id.ed7,
-                    R.id.ed8
+                    R.id.ed8,
+                    R.id.ed9
                 )
             ),
             46 to Triple(
                 "LETTUCE",
                 47,
-                listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)
+                listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6, R.id.ed7)
             ),
             47 to Triple("JEEP", 48, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4)),
             48 to Triple(
