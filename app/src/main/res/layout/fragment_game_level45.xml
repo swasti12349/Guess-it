@@ -93,7 +93,7 @@
 
         <EditText
             android:id="@+id/ed1"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:textCursorDrawable="@drawable/cursor"
             android:backgroundTint="@color/black"
 
@@ -108,7 +108,7 @@
 
         <EditText
             android:id="@+id/ed2"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:editable="false"
             android:textCursorDrawable="@drawable/cursor"
@@ -127,7 +127,7 @@
 
         <EditText
             android:id="@+id/ed3"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -143,7 +143,7 @@
 
         <EditText
             android:id="@+id/ed4"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -158,7 +158,7 @@
 
         <EditText
             android:id="@+id/ed5"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:editable="false"
             android:gravity="center"
@@ -176,7 +176,7 @@
 
         <EditText
             android:id="@+id/ed6"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -192,7 +192,7 @@
 
         <EditText
             android:id="@+id/ed7"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -208,7 +208,7 @@
 
         <EditText
             android:id="@+id/ed8"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:backgroundTint="@color/black"
@@ -224,7 +224,7 @@
 
         <EditText
             android:id="@+id/ed9"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_28sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:imeOptions="actionNext"

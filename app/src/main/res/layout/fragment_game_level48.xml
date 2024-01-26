@@ -185,6 +185,22 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ed7"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/cursor"
+            android:inputType="text|textCapCharacters"
+            android:maxLength="1"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_30ssp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <include

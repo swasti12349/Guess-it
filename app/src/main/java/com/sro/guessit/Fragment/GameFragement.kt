@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.SystemClock
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ import java.util.Random
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -37,8 +39,8 @@ class GameFragement : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var stopwatchJob: Job
-    private var elapsedTime: Long = 0
-    private var startTime: Long = 0
+    private var elapsedTime: Long? = 0
+    private var startTime: Long? = 0
     private lateinit var list: MutableList<EditText>
     private lateinit var handler: Handler
     private var isRunning = false
@@ -194,7 +196,7 @@ class GameFragement : Fragment() {
                 40,
                 listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6, R.id.ed7)
             ),
-            40 to Triple("TOWEL", 41, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4)),
+            40 to Triple("TOWEL", 41, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5)),
             41 to Triple("RIVER", 42, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5)),
             42 to Triple(
                 "NORWAY",
@@ -202,7 +204,7 @@ class GameFragement : Fragment() {
                 listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)
             ),
             43 to Triple("OCEAN", 44, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5)),
-            44 to Triple("STAMPS", 45, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5)),
+            44 to Triple("STAMPS", 45, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)),
             45 to Triple(
                 "HONEYCOMB",
                 46,
@@ -227,7 +229,7 @@ class GameFragement : Fragment() {
             48 to Triple(
                 "BALLOON",
                 49,
-                listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)
+                listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6, R.id.ed7)
             ),
             49 to Triple("TREE", 50, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4)),
             50 to Triple("INDIA", 51, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5))
@@ -391,7 +393,7 @@ class GameFragement : Fragment() {
         val sharedPreferences =
             context?.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
-        return sharedPreferences?.getInt("hintBalanceKey", 20)
+        return sharedPreferences?.getInt("hintBalanceKey", 10)
 
     }
 
@@ -406,14 +408,11 @@ class GameFragement : Fragment() {
     }
 
     private fun updateText(textViewStopwatch: TextView) {
-        val seconds = (elapsedTime / 1000).toInt()
-        val hours = seconds / 3600
-        val minutes = (seconds % 3600) / 60
-        val remainingSeconds = seconds % 60
-
+        val seconds = (elapsedTime?.div(1000))?.toInt()
+        val hours = seconds?.div(3600)
+        val minutes = (seconds?.rem(3600))?.div(60)
+        val remainingSeconds = seconds?.rem(60)
         val timeFormatted = String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds)
-
-
         textViewStopwatch.text = timeFormatted
     }
 
@@ -428,7 +427,7 @@ class GameFragement : Fragment() {
         override fun run() {
             if (isRunning) {
                 val now = SystemClock.elapsedRealtime()
-                elapsedTime += now - startTime
+                elapsedTime = elapsedTime?.plus(now - startTime!!)
                 startTime = now
                 updateText(view?.findViewById(R.id.timer)!!)
                 handler.postDelayed(this, 1000)
@@ -586,7 +585,7 @@ class GameFragement : Fragment() {
                 if (count == 1) {
                     if (checkAnswer(editTexts) == answer) {
                         var hintbal = getHintBalance()
-                        hintbal = hintbal!! + 5
+                        hintbal = hintbal!! + 3
                         saveHint(hintbal)
                         val inputMethodManager =
                             editTexts[0].context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -635,7 +634,7 @@ class GameFragement : Fragment() {
             }
 
             override fun afterTextChanged(editable: Editable) {
-                // No need to do anything here
+
             }
 
             private fun handleBackspacePress(charSequence: CharSequence, start: Int) {
@@ -655,9 +654,18 @@ class GameFragement : Fragment() {
         for (i in 0 until editTexts.size) {
             editTexts[i].addTextChangedListener(textWatcher)
         }
-
-
     }
+
+    fun EditText.setOnBackspaceListener(onBackspacePressed: () -> Unit) {
+        this.setOnKeyListener { _, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_DEL && event.action == KeyEvent.ACTION_DOWN && text.isEmpty()) {
+                onBackspacePressed()
+                return@setOnKeyListener true // consume the event
+            }
+            true // don't consume the event, let it be handled by other listeners or the default behavior
+        }
+    }
+
 
     fun openPlayStore(context: Context) {
         val appPackageName = context.packageName

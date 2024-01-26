@@ -40,7 +40,6 @@ class GameActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.gameContainer, LevelFragment())
         fragmentTransaction.commit()
 
-
     }
 
     override fun onResume() {

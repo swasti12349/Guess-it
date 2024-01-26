@@ -72,7 +72,7 @@ class Dialog {
                 var transaction: FragmentTransaction =
                     fragmentActivity?.getSupportFragmentManager()?.beginTransaction()
                         ?.replace(R.id.gameContainer, LevelFragment())!!
-                transaction.addToBackStack(null).commit()
+                transaction.commit()
                 dialog.dismiss()
 
 //                val gameFragment: GameFragement = GameFragement.newInstance(level)!!

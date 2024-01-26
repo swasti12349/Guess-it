@@ -80,7 +80,7 @@ class LevelFragment : Fragment() {
 
         }
 
-        if (levelList.size % 5 == 0) {
+        if (levelList.size % 8 == 0) {
             HintDialog.show(context, object : HintDialog.HintDialogInterface {
                 override fun onYesClickListener(dialog: Dialog?) {
                     LevelActivity.openPlayStore(requireContext())

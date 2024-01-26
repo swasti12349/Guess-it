@@ -24,7 +24,6 @@ class HintDialog {
 
             dialogView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.yellow))
 
-
             val dialog = builder.create()
             val yes = dialogView.findViewById<TextView>(R.id.yes)
             val no = dialogView.findViewById<TextView>(R.id.no)
@@ -44,8 +43,6 @@ class HintDialog {
             dialog.show()
         }
 
-        fun dismiss() {
 
-        }
     }
 }
