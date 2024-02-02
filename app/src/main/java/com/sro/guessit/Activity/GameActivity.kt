@@ -27,12 +27,10 @@ class GameActivity : AppCompatActivity() {
         initializeMobilAds()
         level = intent.getIntExtra("selectedLevel", 0).toString()
 
-
         loadFragment()
     }
 
     private fun loadFragment() {
-
 
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()

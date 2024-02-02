@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".Activity.GameActivity">
+    tools:context=".Activity.GuessTheGameActivity">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -13,17 +13,15 @@
         android:layout_height="@dimen/_45sdp"
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="@string/bannerunit1"
+        app:adUnitId="@string/bannerunit2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/gameContainer"
+        android:id="@+id/gameContainergtg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/adView" />
-
-
 
 </RelativeLayout>

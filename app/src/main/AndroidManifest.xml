@@ -15,6 +15,12 @@
         android:theme="@style/Base.Theme.GuessIt"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.GuessTheGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CatActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ContactActivity"
             android:exported="false" />
         <activity

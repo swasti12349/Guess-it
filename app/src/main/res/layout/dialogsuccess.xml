@@ -41,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:fontFamily="sans-serif"
+                    android:id="@+id/title"
                     android:text="Level Completed"
                     android:textColor="@color/black"
                     android:textSize="24sp"

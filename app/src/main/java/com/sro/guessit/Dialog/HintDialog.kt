@@ -28,6 +28,7 @@ class HintDialog {
             val yes = dialogView.findViewById<TextView>(R.id.yes)
             val no = dialogView.findViewById<TextView>(R.id.no)
             val textview = dialogView.findViewById<TextView>(R.id.titleName)
+            builder.setCancelable(false)
 
             textview.text = title
             yes.setOnClickListener {

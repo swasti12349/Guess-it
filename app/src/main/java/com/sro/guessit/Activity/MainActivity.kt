@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnPlay.setOnClickListener {
-            startActivity(Intent(this@MainActivity, GameActivity::class.java))
+            startActivity(Intent(this@MainActivity, CatActivity::class.java))
         }
 
         binding.btnSetting.setOnClickListener {

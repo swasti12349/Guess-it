@@ -204,7 +204,11 @@ class GameFragement : Fragment() {
                 listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)
             ),
             43 to Triple("OCEAN", 44, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5)),
-            44 to Triple("STAMPS", 45, listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)),
+            44 to Triple(
+                "STAMPS",
+                45,
+                listOf(R.id.ed1, R.id.ed2, R.id.ed3, R.id.ed4, R.id.ed5, R.id.ed6)
+            ),
             45 to Triple(
                 "HONEYCOMB",
                 46,

@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import com.sro.guessit.Fragment.GameFragement
@@ -14,15 +15,11 @@ import com.sro.guessit.Fragment.LevelFragment
 import com.sro.guessit.R
 
 
-class Dialog {
+class GameDialog {
 
     interface CustomDialogInterface {
         fun onPositiveButtonClick(
-            dialog: Dialog?,
-            text: String?,
-            redStar: ImageView?,
-            yellowStar: ImageView?,
-            greenStar: ImageView?
+
         )
     }
 
@@ -30,13 +27,11 @@ class Dialog {
         fun show(
             context: Context?,
             level: Int,
-            fragmentActivity: FragmentActivity?,
-            listener: CustomDialogInterface
+            listener: CustomDialogInterface,
+            titleStr:String
         ) {
             val builder = AlertDialog.Builder(context)
             val inflater = LayoutInflater.from(context)
-            GameFragement.currentLevel++
-            builder.setCancelable(false)
 
             val dialogView: View = inflater.inflate(R.layout.dialogsuccess, null)
             builder.setView(dialogView)
@@ -46,7 +41,12 @@ class Dialog {
             val yellowStar = dialogView.findViewById<ImageView>(R.id.yellowstar)
             val greenStar = dialogView.findViewById<ImageView>(R.id.greenstar)
             val nextLevelBtn = dialogView.findViewById<ImageView>(R.id.nextlevel)
+            val title = dialogView.findViewById<TextView>(R.id.title)
+
+            title.text = titleStr
+
             val dialog = builder.create()
+            builder.setCancelable(false)
 
             when (level) {
                 1 -> {
@@ -69,22 +69,8 @@ class Dialog {
             }
 
             nextLevelBtn.setOnClickListener {
-//                context?.startActivity(Intent(context, LevelActivity::class.java))
-                var transaction: FragmentTransaction =
-                    fragmentActivity?.getSupportFragmentManager()?.beginTransaction()
-                        ?.replace(R.id.gameContainer, LevelFragment())!!
-                transaction.commit()
+                listener.onPositiveButtonClick()
                 dialog.dismiss()
-
-//                val gameFragment: GameFragement = GameFragement.newInstance(level)!!
-//
-//                val transaction: FragmentTransaction =
-//                    fragmentActivity?.getSupportFragmentManager()?.beginTransaction()
-//                        ?.replace(R.id.gameContainer, LevelFragment())!!
-//                transaction.replace(R.id.gameContainer, gameFragment)
-//                transaction.commit()
-//                dialog.dismiss()
-
             }
             dialog.show()
         }
