@@ -222,26 +222,26 @@ class GuessTheGame : Fragment() {
                 var hintbal = getHintBalance()
                 hintbal = hintbal!! + 2
                 saveHint(hintbal)
-                binding.hintbal.text ="Hint: $hintbal"
-                    if (currentLevel < 54) {
-                        GameDialog.show(context, 3, object : GameDialog.CustomDialogInterface {
-                            override fun onPositiveButtonClick() {
-                                binding.gameImage.setImageResource(imageList[currentLevel])
-                                binding.levelnumber.text = "Level $currentLevel/53"
-                                binding.autoCompleteTextView.clearListSelection()
-                            }
-                        }, "Level Completed")
-                    } else {
-                        saveLevel()
+                binding.hintbal.text = "Hint: $hintbal"
+                if (currentLevel < 54) {
+                    GameDialog.show(context, 3, object : GameDialog.CustomDialogInterface {
+                        override fun onPositiveButtonClick() {
+                            binding.gameImage.setImageResource(imageList[currentLevel])
+                            binding.levelnumber.text = "Level $currentLevel/53"
+                            binding.autoCompleteTextView.clearListSelection()
+                        }
+                    }, "Level Completed")
+                } else {
+                    saveLevel()
 
-                        GameDialog.show(context, 3, object : GameDialog.CustomDialogInterface {
-                            override fun onPositiveButtonClick() {
-                                startActivity(Intent(activity, MainActivity::class.java))
-                            }
+                    GameDialog.show(context, 3, object : GameDialog.CustomDialogInterface {
+                        override fun onPositiveButtonClick() {
+                            startActivity(Intent(activity, MainActivity::class.java))
+                        }
 
 
-                        }, "Congratulations!! You completed all the levels")
-                    }
+                    }, "Congratulations!! You completed all the levels")
+                }
 
 
             } else {

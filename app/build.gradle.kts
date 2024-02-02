@@ -12,8 +12,8 @@ android {
         minSdk = 23
         targetSdk = 33
         resConfigs("en", "xhdpi")
-        versionCode = 4
-        versionName = "1.0.3"
+        versionCode = 5
+        versionName = "1.1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
